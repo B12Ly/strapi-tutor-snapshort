@@ -22,9 +22,9 @@
     },
     "courses": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::course.course",
-      "mappedBy": "payment"
+      "mappedBy": "payments"
     },
     "user": {
       "type": "relation",

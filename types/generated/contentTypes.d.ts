@@ -586,7 +586,7 @@ export interface ApiCourseCourse extends Struct.CollectionTypeSchema {
       'api::course.course'
     > &
       Schema.Attribute.Private;
-    payment: Schema.Attribute.Relation<'manyToOne', 'api::payment.payment'>;
+    payments: Schema.Attribute.Relation<'manyToMany', 'api::payment.payment'>;
     Price: Schema.Attribute.Integer;
     Promotepic: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
@@ -598,8 +598,8 @@ export interface ApiCourseCourse extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    user: Schema.Attribute.Relation<
-      'manyToOne',
+    users: Schema.Attribute.Relation<
+      'manyToMany',
       'plugin::users-permissions.user'
     >;
   };
@@ -617,7 +617,7 @@ export interface ApiPaymentPayment extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    courses: Schema.Attribute.Relation<'oneToMany', 'api::course.course'>;
+    courses: Schema.Attribute.Relation<'manyToMany', 'api::course.course'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1210,7 +1210,7 @@ export interface PluginUsersPermissionsUser
     blocked: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     confirmationToken: Schema.Attribute.String & Schema.Attribute.Private;
     confirmed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
-    courses: Schema.Attribute.Relation<'oneToMany', 'api::course.course'>;
+    courses: Schema.Attribute.Relation<'manyToMany', 'api::course.course'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

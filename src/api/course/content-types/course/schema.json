@@ -54,15 +54,15 @@
     "CourseDuration": {
       "type": "integer"
     },
-    "user": {
+    "users": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "plugin::users-permissions.user",
-      "inversedBy": "courses"
+      "mappedBy": "courses"
     },
-    "payment": {
+    "payments": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::payment.payment",
       "inversedBy": "courses"
     }
